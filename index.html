@@ -3,342 +3,146 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JARVIS Portfolio</title>
+  <title>Study JARVIS</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-      min-height: 100vh;
-      background: radial-gradient(circle at top, #0b3558, #020912 70%);
-      color: white;
-      overflow-x: hidden;
-    }
-
-    .grid-bg {
-      position: fixed;
-      inset: 0;
-      background-image: linear-gradient(rgba(0, 255, 255, 0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 255, 0.08) 1px, transparent 1px);
-      background-size: 40px 40px;
-      z-index: -2;
-    }
-
-    .glow {
-      position: fixed;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background: rgba(0, 221, 255, 0.18);
-      filter: blur(90px);
-      top: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: -1;
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 24px 8%;
-      border-bottom: 1px solid rgba(0, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-      color: #00eaff;
-      letter-spacing: 3px;
-      text-shadow: 0 0 18px #00eaff;
-    }
-
-    nav a {
-      color: #dffcff;
-      text-decoration: none;
-      margin-left: 24px;
-      font-size: 14px;
-    }
-
-    nav a:hover {
-      color: #00eaff;
-    }
-
-    .hero {
-      min-height: 88vh;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      align-items: center;
-      gap: 40px;
-      padding: 60px 8%;
-    }
-
-    .hero h1 {
-      font-size: clamp(42px, 7vw, 86px);
-      line-height: 1;
-      margin-bottom: 20px;
-    }
-
-    .hero h1 span {
-      color: #00eaff;
-      text-shadow: 0 0 25px #00eaff;
-    }
-
-    .hero p {
-      font-size: 18px;
-      color: #b8dce4;
-      max-width: 650px;
-      line-height: 1.7;
-      margin-bottom: 30px;
-    }
-
-    .btns {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 14px 24px;
-      border-radius: 999px;
-      border: 1px solid #00eaff;
-      color: #001014;
-      background: #00eaff;
-      font-weight: bold;
-      text-decoration: none;
-      box-shadow: 0 0 24px rgba(0, 234, 255, 0.45);
-    }
-
-    .btn.secondary {
-      background: transparent;
-      color: #00eaff;
-      box-shadow: none;
-    }
-
-    .arc-reactor {
-      width: min(360px, 80vw);
-      aspect-ratio: 1;
-      margin: auto;
-      border-radius: 50%;
-      border: 3px solid #00eaff;
-      display: grid;
-      place-items: center;
-      box-shadow: 0 0 30px #00eaff, inset 0 0 40px rgba(0, 234, 255, 0.4);
-      animation: pulse 2s infinite alternate;
-      position: relative;
-    }
-
-    .arc-reactor::before,
-    .arc-reactor::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      border: 2px dashed rgba(0, 234, 255, 0.75);
-      inset: 35px;
-      animation: rotate 12s linear infinite;
-    }
-
-    .arc-reactor::after {
-      inset: 75px;
-      animation-duration: 7s;
-      animation-direction: reverse;
-    }
-
-    .core {
-      width: 95px;
-      height: 95px;
-      border-radius: 50%;
-      background: #00eaff;
-      box-shadow: 0 0 50px #00eaff;
-      z-index: 2;
-    }
-
-    section {
-      padding: 70px 8%;
-    }
-
-    .section-title {
-      font-size: 34px;
-      margin-bottom: 30px;
-      color: #00eaff;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px;
-    }
-
-    .card {
-      padding: 24px;
-      border: 1px solid rgba(0, 234, 255, 0.25);
-      background: rgba(2, 18, 33, 0.7);
-      border-radius: 22px;
-      box-shadow: 0 0 25px rgba(0, 234, 255, 0.08);
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      border-color: #00eaff;
-      box-shadow: 0 0 28px rgba(0, 234, 255, 0.28);
-    }
-
-    .card h3 {
-      margin-bottom: 12px;
-      color: white;
-    }
-
-    .card p {
-      color: #b8dce4;
-      line-height: 1.6;
-    }
-
-    .terminal {
-      background: #02070d;
-      border: 1px solid rgba(0, 234, 255, 0.35);
-      border-radius: 18px;
-      padding: 22px;
-      color: #00ffcc;
-      font-family: monospace;
-      line-height: 1.8;
-      box-shadow: inset 0 0 25px rgba(0, 234, 255, 0.08);
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: #8fb9c4;
-      border-top: 1px solid rgba(0, 255, 255, 0.2);
-    }
-
-    @keyframes pulse {
-      from { transform: scale(0.98); }
-      to { transform: scale(1.03); }
-    }
-
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    @media (max-width: 850px) {
-      .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .hero p {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .btns {
-        justify-content: center;
-      }
-
-      nav {
-        flex-direction: column;
-        gap: 14px;
-      }
-
-      nav a {
-        margin: 0 8px;
-      }
-    }
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+    body{min-height:100vh;background:radial-gradient(circle at top,#0b3558,#020912 70%);color:white;overflow-x:hidden}
+    .grid-bg{position:fixed;inset:0;background-image:linear-gradient(rgba(0,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,255,.08) 1px,transparent 1px);background-size:40px 40px;z-index:-2}
+    .glow{position:fixed;width:520px;height:520px;border-radius:50%;background:rgba(0,221,255,.18);filter:blur(90px);top:8%;left:50%;transform:translateX(-50%);z-index:-1}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:22px 7%;border-bottom:1px solid rgba(0,255,255,.2);backdrop-filter:blur(10px);position:sticky;top:0;z-index:10;background:rgba(2,9,18,.55)}
+    .logo{font-size:24px;font-weight:bold;color:#00eaff;letter-spacing:3px;text-shadow:0 0 18px #00eaff}
+    nav a{color:#dffcff;text-decoration:none;margin-left:18px;font-size:14px}nav a:hover{color:#00eaff}
+    .hero{min-height:85vh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:40px;padding:55px 7%}
+    h1{font-size:clamp(42px,7vw,82px);line-height:1;margin-bottom:18px}.blue{color:#00eaff;text-shadow:0 0 25px #00eaff}
+    .hero p{font-size:18px;color:#b8dce4;max-width:680px;line-height:1.7;margin-bottom:28px}
+    .btns{display:flex;gap:14px;flex-wrap:wrap}.btn{cursor:pointer;padding:14px 22px;border-radius:999px;border:1px solid #00eaff;color:#001014;background:#00eaff;font-weight:bold;text-decoration:none;box-shadow:0 0 24px rgba(0,234,255,.45)}.btn.secondary{background:transparent;color:#00eaff;box-shadow:none}
+    .arc{width:min(365px,82vw);aspect-ratio:1;margin:auto;border-radius:50%;border:3px solid #00eaff;display:grid;place-items:center;box-shadow:0 0 30px #00eaff,inset 0 0 40px rgba(0,234,255,.35);animation:pulse 2s infinite alternate;position:relative}.arc:before,.arc:after{content:"";position:absolute;border-radius:50%;border:2px dashed rgba(0,234,255,.75);inset:35px;animation:rotate 12s linear infinite}.arc:after{inset:78px;animation-duration:7s;animation-direction:reverse}.core{width:95px;height:95px;border-radius:50%;background:#00eaff;box-shadow:0 0 50px #00eaff;z-index:2}
+    section{padding:65px 7%}.title{font-size:34px;margin-bottom:26px;color:#00eaff}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:22px}.card{padding:23px;border:1px solid rgba(0,234,255,.25);background:rgba(2,18,33,.72);border-radius:22px;box-shadow:0 0 25px rgba(0,234,255,.08);transition:.3s}.card:hover{transform:translateY(-7px);border-color:#00eaff;box-shadow:0 0 28px rgba(0,234,255,.28)}.card h3{margin-bottom:10px}.card p,.card li{color:#b8dce4;line-height:1.6}.card ul{padding-left:18px}
+    .panel{background:#02070d;border:1px solid rgba(0,234,255,.35);border-radius:20px;padding:22px;color:#00ffcc;font-family:monospace;line-height:1.8;box-shadow:inset 0 0 25px rgba(0,234,255,.08)}
+    .tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}.input,.select{width:100%;padding:13px;margin-top:10px;border-radius:12px;border:1px solid rgba(0,234,255,.35);background:#04111d;color:white}.small{font-size:13px;color:#91c9d4;margin-top:10px}.result{margin-top:14px;padding:14px;border-radius:14px;background:rgba(0,234,255,.08);color:#dffcff;min-height:52px;line-height:1.5}
+    footer{text-align:center;padding:30px;color:#8fb9c4;border-top:1px solid rgba(0,255,255,.2)}
+    @keyframes pulse{from{transform:scale(.98)}to{transform:scale(1.03)}}@keyframes rotate{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+    @media(max-width:850px){.hero{grid-template-columns:1fr;text-align:center}.hero p{margin-left:auto;margin-right:auto}.btns{justify-content:center}nav{flex-direction:column;gap:14px}nav a{margin:0 8px}}
   </style>
 </head>
 <body>
-  <div class="grid-bg"></div>
-  <div class="glow"></div>
-
-  <nav>
-    <div class="logo">J.A.R.V.I.S</div>
-    <div>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
+  <div class="grid-bg"></div><div class="glow"></div>
+  <nav><div class="logo">STUDY J.A.R.V.I.S</div><div><a href="#dashboard">Dashboard</a><a href="#tools">Tools</a><a href="#voice">Voice</a><a href="#subjects">Subjects</a></div></nav>
 
   <main class="hero">
     <div>
-      <h1>Hello, I am <span>Your Name</span></h1>
-      <p>
-        A futuristic GitHub portfolio inspired by JARVIS. Built to showcase my projects,
-        skills, AI ideas, coding journey, and engineering work in a powerful high-tech style.
-      </p>
-      <div class="btns">
-        <a class="btn" href="https://github.com/yourusername" target="_blank">View GitHub</a>
-        <a class="btn secondary" href="#projects">Explore Projects</a>
-      </div>
+      <h1>Your AI <span class="blue">Study Command Center</span></h1>
+      <p>One futuristic site for study planning, subject tracking, viva preparation, notes, formulas, reminders, and voice control. Click any option or speak a command like “open Python”, “start timer”, or “show viva”.</p>
+      <div class="btns"><button class="btn" onclick="speak('Study JARVIS online. Choose a study option or use voice command.')">Activate JARVIS</button><a class="btn secondary" href="#tools">Open Tools</a></div>
     </div>
-
-    <div class="arc-reactor">
-      <div class="core"></div>
-    </div>
+    <div class="arc"><div class="core"></div></div>
   </main>
 
-  <section id="about">
-    <h2 class="section-title">System Profile</h2>
-    <div class="terminal">
-      &gt; Initializing student profile...<br />
-      &gt; Name: Your Name<br />
-      &gt; Role: B.Tech Student / Developer<br />
-      &gt; Mission: Build smart projects, learn deeply, and solve real-world problems.<br />
-      &gt; Status: Online and improving every day.
-    </div>
-  </section>
-
-  <section id="projects">
-    <h2 class="section-title">Featured Projects</h2>
+  <section id="dashboard">
+    <h2 class="title">Main Internal Options</h2>
     <div class="cards">
-      <div class="card">
-        <h3>AI Gesture Drone</h3>
-        <p>A smart drone concept controlled using hand gestures, gloves, sensors, and AI-based recognition.</p>
-      </div>
-      <div class="card">
-        <h3>Daily Expense Logger</h3>
-        <p>A chat-based system that converts spending messages into structured JSON and stores them in Google Sheets.</p>
-      </div>
-      <div class="card">
-        <h3>Smart Compost System</h3>
-        <p>A project idea for detecting waste, managing moisture, reducing odor, and generating useful compost.</p>
-      </div>
+      <div class="card"><h3>📅 Study Planner</h3><p>Plan daily study with subject one, subject two, and Python revision.</p></div>
+      <div class="card"><h3>⏱ Focus Timer</h3><p>Start a 25-minute focus session and track deep study time.</p></div>
+      <div class="card"><h3>🎤 Viva Mode</h3><p>Prepare answers for code explanation, theory questions, and project viva.</p></div>
+      <div class="card"><h3>📚 Notes Vault</h3><p>Keep quick notes for Python, BEEE, Physics, Discrete Maths, and Statistics.</p></div>
+      <div class="card"><h3>🧠 Revision Mode</h3><p>Use quick recall, formulas, MCQs, and mistake revision before exams.</p></div>
+      <div class="card"><h3>📊 Progress Tracker</h3><p>Track completed topics, pending topics, confidence, and exam readiness.</p></div>
     </div>
   </section>
 
-  <section id="skills">
-    <h2 class="section-title">Skill Matrix</h2>
+  <section id="tools">
+    <h2 class="title">All-in-One Study Tools</h2>
+    <div class="tools">
+      <div class="card"><h3>Today’s Plan Generator</h3><select id="subject" class="select"><option>Python</option><option>BEEE</option><option>Physics</option><option>Probability & Statistics</option><option>Discrete Mathematics</option></select><button class="btn" onclick="makePlan()" style="margin-top:12px">Generate Plan</button><div id="plan" class="result">Your plan will appear here.</div></div>
+      <div class="card"><h3>Focus Timer</h3><button class="btn" onclick="startTimer()">Start 25 Min Timer</button><div id="timer" class="result">25:00</div><p class="small">Use this for one serious study block.</p></div>
+      <div class="card"><h3>Quick Notes</h3><input id="note" class="input" placeholder="Write a quick note..."/><button class="btn" onclick="saveNote()" style="margin-top:12px">Save Note</button><div id="notes" class="result">No notes saved yet.</div></div>
+      <div class="card"><h3>Viva Question Generator</h3><button class="btn" onclick="viva()">Generate Viva Questions</button><div id="viva" class="result">Click to prepare viva questions.</div></div>
+    </div>
+  </section>
+
+  <section id="voice">
+    <h2 class="title">Voice Control</h2>
+    <div class="panel">
+      &gt; Commands available:<br>
+      &gt; “open python” | “open beee” | “show viva” | “start timer” | “make plan” | “read status”<br><br>
+      <button class="btn" onclick="listen()">🎙 Start Voice Command</button>
+      <div id="voiceOutput" class="result">Voice system standing by...</div>
+    </div>
+  </section>
+
+  <section id="subjects">
+    <h2 class="title">Subject Modules</h2>
     <div class="cards">
-      <div class="card"><h3>Python</h3><p>Basics, loops, conditions, functions, files, NumPy, Pandas, and Matplotlib.</p></div>
-      <div class="card"><h3>Web Design</h3><p>HTML, CSS, responsive layouts, GitHub Pages, and portfolio development.</p></div>
-      <div class="card"><h3>Engineering</h3><p>Physics, BEEE circuits, semiconductor devices, and project-based learning.</p></div>
-      <div class="card"><h3>Data Analysis</h3><p>Excel, dashboards, graphs, reports, and beginner-level analytics workflow.</p></div>
+      <div class="card" id="python"><h3>Python</h3><ul><li>Syntax, variables, data types</li><li>Loops and conditions</li><li>Functions, modules, files</li><li>NumPy, Pandas, Matplotlib</li></ul></div>
+      <div class="card" id="beee"><h3>BEEE</h3><ul><li>DC circuits</li><li>AC circuits</li><li>Diodes and rectifiers</li><li>Clippers and clampers</li></ul></div>
+      <div class="card"><h3>Physics</h3><ul><li>Hall effect</li><li>Graphs and experiments</li><li>Units and calculations</li><li>Viva preparation</li></ul></div>
+      <div class="card"><h3>Discrete Maths</h3><ul><li>Relations</li><li>Induction</li><li>Number theory</li><li>Graphs and combinatorics</li></ul></div>
     </div>
   </section>
 
-  <section id="contact">
-    <h2 class="section-title">Contact Protocol</h2>
-    <div class="terminal">
-      &gt; Email: yourmail@example.com<br />
-      &gt; GitHub: github.com/yourusername<br />
-      &gt; LinkedIn: linkedin.com/in/yourusername<br />
-      &gt; Message: Ready for collaboration.
-    </div>
-  </section>
+  <footer>Study JARVIS • Voice Enabled • Exam Focused • GitHub Pages Ready</footer>
 
-  <footer>
-    Designed like JARVIS • Powered by HTML & CSS • Deploy on GitHub Pages
-  </footer>
+  <script>
+    function speak(text){
+      const msg=new SpeechSynthesisUtterance(text);
+      msg.rate=1; msg.pitch=1;
+      speechSynthesis.speak(msg);
+    }
+
+    function makePlan(){
+      const s=document.getElementById('subject').value;
+      const text=`Today: 40 minutes ${s} concept study, 35 minutes practice questions, 25 minutes Python revision, 20 minutes quick recap and mistakes.`;
+      document.getElementById('plan').innerText=text;
+      speak(text);
+    }
+
+    let timerInterval;
+    function startTimer(){
+      clearInterval(timerInterval);
+      let time=25*60;
+      speak('Focus timer started. Study with full concentration.');
+      timerInterval=setInterval(()=>{
+        let m=Math.floor(time/60), sec=time%60;
+        document.getElementById('timer').innerText=`${m}:${sec<10?'0':''}${sec}`;
+        if(time--<=0){clearInterval(timerInterval);speak('Focus session completed. Take a short break.');}
+      },1000);
+    }
+
+    function saveNote(){
+      const note=document.getElementById('note').value.trim();
+      if(!note)return;
+      const old=document.getElementById('notes').innerHTML==='No notes saved yet.'?'':document.getElementById('notes').innerHTML;
+      document.getElementById('notes').innerHTML=old+'• '+note+'<br>';
+      document.getElementById('note').value='';
+      speak('Note saved.');
+    }
+
+    function viva(){
+      const qs='1. Explain your project in simple words. 2. What problem does it solve? 3. Which logic did you use? 4. What are the main functions? 5. What is the time complexity? 6. What improvement can be done?';
+      document.getElementById('viva').innerText=qs;
+      speak('Viva mode activated. Prepare these important questions.');
+    }
+
+    function listen(){
+      const output=document.getElementById('voiceOutput');
+      const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+      if(!SpeechRecognition){output.innerText='Voice recognition is not supported in this browser. Use Chrome.';return;}
+      const recog=new SpeechRecognition();
+      recog.lang='en-IN';
+      recog.start();
+      output.innerText='Listening...';
+      recog.onresult=(e)=>{
+        const command=e.results[0][0].transcript.toLowerCase();
+        output.innerText='Command: '+command;
+        if(command.includes('python')){location.hash='python';speak('Opening Python module.');}
+        else if(command.includes('beee')){location.hash='beee';speak('Opening BEEE module.');}
+        else if(command.includes('viva')){viva();location.hash='tools';}
+        else if(command.includes('timer')){startTimer();location.hash='tools';}
+        else if(command.includes('plan')){makePlan();location.hash='tools';}
+        else if(command.includes('status')){speak('You are online. Keep studying consistently. Focus on Python, BEEE, Physics, Statistics, and Discrete Maths.');}
+        else{speak('Command not found. Try open Python, start timer, show viva, or make plan.');}
+      };
+    }
+  </script>
 </body>
 </html>
