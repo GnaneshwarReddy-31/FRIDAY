@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Study JARVIS</title>
+  <title>Study JARVIS - Male Voice</title>
   <style>
     *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
     body{min-height:100vh;background:radial-gradient(circle at top,#0b3558,#020912 70%);color:white;overflow-x:hidden}
@@ -12,14 +12,14 @@
     nav{display:flex;justify-content:space-between;align-items:center;padding:22px 7%;border-bottom:1px solid rgba(0,255,255,.2);backdrop-filter:blur(10px);position:sticky;top:0;z-index:10;background:rgba(2,9,18,.55)}
     .logo{font-size:24px;font-weight:bold;color:#00eaff;letter-spacing:3px;text-shadow:0 0 18px #00eaff}
     nav a{color:#dffcff;text-decoration:none;margin-left:18px;font-size:14px}nav a:hover{color:#00eaff}
-    .hero{min-height:85vh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:40px;padding:55px 7%}
+    .hero{min-height:82vh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:40px;padding:55px 7%}
     h1{font-size:clamp(42px,7vw,82px);line-height:1;margin-bottom:18px}.blue{color:#00eaff;text-shadow:0 0 25px #00eaff}
     .hero p{font-size:18px;color:#b8dce4;max-width:680px;line-height:1.7;margin-bottom:28px}
-    .btns{display:flex;gap:14px;flex-wrap:wrap}.btn{cursor:pointer;padding:14px 22px;border-radius:999px;border:1px solid #00eaff;color:#001014;background:#00eaff;font-weight:bold;text-decoration:none;box-shadow:0 0 24px rgba(0,234,255,.45)}.btn.secondary{background:transparent;color:#00eaff;box-shadow:none}
+    .btns{display:flex;gap:14px;flex-wrap:wrap}.btn{cursor:pointer;padding:13px 20px;border-radius:999px;border:1px solid #00eaff;color:#001014;background:#00eaff;font-weight:bold;text-decoration:none;box-shadow:0 0 24px rgba(0,234,255,.45)}.btn.secondary{background:transparent;color:#00eaff;box-shadow:none}.btn.danger{background:#ff4d6d;border-color:#ff4d6d;color:white;box-shadow:none}.btn.smallBtn{padding:8px 12px;font-size:12px}
     .arc{width:min(365px,82vw);aspect-ratio:1;margin:auto;border-radius:50%;border:3px solid #00eaff;display:grid;place-items:center;box-shadow:0 0 30px #00eaff,inset 0 0 40px rgba(0,234,255,.35);animation:pulse 2s infinite alternate;position:relative}.arc:before,.arc:after{content:"";position:absolute;border-radius:50%;border:2px dashed rgba(0,234,255,.75);inset:35px;animation:rotate 12s linear infinite}.arc:after{inset:78px;animation-duration:7s;animation-direction:reverse}.core{width:95px;height:95px;border-radius:50%;background:#00eaff;box-shadow:0 0 50px #00eaff;z-index:2}
-    section{padding:65px 7%}.title{font-size:34px;margin-bottom:26px;color:#00eaff}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:22px}.card{padding:23px;border:1px solid rgba(0,234,255,.25);background:rgba(2,18,33,.72);border-radius:22px;box-shadow:0 0 25px rgba(0,234,255,.08);transition:.3s}.card:hover{transform:translateY(-7px);border-color:#00eaff;box-shadow:0 0 28px rgba(0,234,255,.28)}.card h3{margin-bottom:10px}.card p,.card li{color:#b8dce4;line-height:1.6}.card ul{padding-left:18px}
+    section{padding:62px 7%}.title{font-size:34px;margin-bottom:26px;color:#00eaff}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:22px}.card{padding:23px;border:1px solid rgba(0,234,255,.25);background:rgba(2,18,33,.72);border-radius:22px;box-shadow:0 0 25px rgba(0,234,255,.08);transition:.3s}.card:hover{transform:translateY(-7px);border-color:#00eaff;box-shadow:0 0 28px rgba(0,234,255,.28)}.card h3{margin-bottom:10px}.card p,.card li{color:#b8dce4;line-height:1.6}.card ul{padding-left:18px}
     .panel{background:#02070d;border:1px solid rgba(0,234,255,.35);border-radius:20px;padding:22px;color:#00ffcc;font-family:monospace;line-height:1.8;box-shadow:inset 0 0 25px rgba(0,234,255,.08)}
-    .tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}.input,.select{width:100%;padding:13px;margin-top:10px;border-radius:12px;border:1px solid rgba(0,234,255,.35);background:#04111d;color:white}.small{font-size:13px;color:#91c9d4;margin-top:10px}.result{margin-top:14px;padding:14px;border-radius:14px;background:rgba(0,234,255,.08);color:#dffcff;min-height:52px;line-height:1.5}
+    .tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px}.input,.select,textarea{width:100%;padding:13px;margin-top:10px;border-radius:12px;border:1px solid rgba(0,234,255,.35);background:#04111d;color:white}textarea{min-height:140px;resize:vertical}.small{font-size:13px;color:#91c9d4;margin-top:10px}.result{margin-top:14px;padding:14px;border-radius:14px;background:rgba(0,234,255,.08);color:#dffcff;min-height:52px;line-height:1.5}.noteItem{padding:12px;margin-top:10px;border:1px solid rgba(0,234,255,.2);border-radius:14px;background:rgba(0,0,0,.25)}
     footer{text-align:center;padding:30px;color:#8fb9c4;border-top:1px solid rgba(0,255,255,.2)}
     @keyframes pulse{from{transform:scale(.98)}to{transform:scale(1.03)}}@keyframes rotate{from{transform:rotate(0)}to{transform:rotate(360deg)}}
     @media(max-width:850px){.hero{grid-template-columns:1fr;text-align:center}.hero p{margin-left:auto;margin-right:auto}.btns{justify-content:center}nav{flex-direction:column;gap:14px}nav a{margin:0 8px}}
@@ -27,44 +27,62 @@
 </head>
 <body>
   <div class="grid-bg"></div><div class="glow"></div>
-  <nav><div class="logo">STUDY J.A.R.V.I.S</div><div><a href="#dashboard">Dashboard</a><a href="#tools">Tools</a><a href="#voice">Voice</a><a href="#subjects">Subjects</a></div></nav>
+  <nav><div class="logo">STUDY J.A.R.V.I.S</div><div><a href="#dashboard">Dashboard</a><a href="#tools">Tools</a><a href="#notes">Live Notes</a><a href="#voice">Voice</a></div></nav>
 
   <main class="hero">
     <div>
       <h1>Your AI <span class="blue">Study Command Center</span></h1>
-      <p>One futuristic site for study planning, subject tracking, viva preparation, notes, formulas, reminders, and voice control. Click any option or speak a command like “open Python”, “start timer”, or “show viva”.</p>
-      <div class="btns"><button class="btn" onclick="speak('Study JARVIS online. Choose a study option or use voice command.')">Activate JARVIS</button><a class="btn secondary" href="#tools">Open Tools</a></div>
+      <p>Now supports multiple voice languages, live editable notes, saved notes, study planner, focus timer, viva mode, and internal subject modules.</p>
+      <div class="btns"><button class="btn" onclick="speakByLang('Study JARVIS online. Choose a study option or use voice command.','स्टडी जार्विस ऑनलाइन है। कोई भी स्टडी ऑप्शन चुनिए या वॉइस कमांड दीजिए।')">Activate JARVIS</button><a class="btn secondary" href="#notes">Open Live Notes</a></div>
     </div>
     <div class="arc"><div class="core"></div></div>
   </main>
 
   <section id="dashboard">
-    <h2 class="title">Main Internal Options</h2>
+    <h2 class="title">Internal Study Options</h2>
     <div class="cards">
-      <div class="card"><h3>📅 Study Planner</h3><p>Plan daily study with subject one, subject two, and Python revision.</p></div>
-      <div class="card"><h3>⏱ Focus Timer</h3><p>Start a 25-minute focus session and track deep study time.</p></div>
-      <div class="card"><h3>🎤 Viva Mode</h3><p>Prepare answers for code explanation, theory questions, and project viva.</p></div>
-      <div class="card"><h3>📚 Notes Vault</h3><p>Keep quick notes for Python, BEEE, Physics, Discrete Maths, and Statistics.</p></div>
-      <div class="card"><h3>🧠 Revision Mode</h3><p>Use quick recall, formulas, MCQs, and mistake revision before exams.</p></div>
-      <div class="card"><h3>📊 Progress Tracker</h3><p>Track completed topics, pending topics, confidence, and exam readiness.</p></div>
+      <div class="card"><h3>📅 Study Planner</h3><p>Auto-create today's subject plan.</p></div>
+      <div class="card"><h3>⏱ Focus Timer</h3><p>Start a serious 25-minute study block.</p></div>
+      <div class="card"><h3>🎤 Viva Mode</h3><p>Generate viva questions instantly.</p></div>
+      <div class="card"><h3>📝 Live Notes</h3><p>Edit notes directly. Notes are saved in your browser.</p></div>
+      <div class="card"><h3>🌐 Voice Language</h3><p>Use English or Hindi voice command and response.</p></div>
+      <div class="card"><h3>📚 Subjects</h3><p>Python, BEEE, Physics, Statistics, and Discrete Maths.</p></div>
     </div>
   </section>
 
   <section id="tools">
-    <h2 class="title">All-in-One Study Tools</h2>
+    <h2 class="title">Study Tools</h2>
     <div class="tools">
+      <div class="card"><h3>Voice Settings</h3><select id="lang" class="select" onchange="setLang()"><option value="en-US">Simple English Male</option><option value="en-GB">British English Male</option><option value="en-IN">Indian English</option></select><select id="voiceSelect" class="select" onchange="setVoice()"><option>Loading voices...</option></select><p class="small">Uses JavaScript voice system. Choose a deep male English voice for a JARVIS-like feel.</p></div>
       <div class="card"><h3>Today’s Plan Generator</h3><select id="subject" class="select"><option>Python</option><option>BEEE</option><option>Physics</option><option>Probability & Statistics</option><option>Discrete Mathematics</option></select><button class="btn" onclick="makePlan()" style="margin-top:12px">Generate Plan</button><div id="plan" class="result">Your plan will appear here.</div></div>
-      <div class="card"><h3>Focus Timer</h3><button class="btn" onclick="startTimer()">Start 25 Min Timer</button><div id="timer" class="result">25:00</div><p class="small">Use this for one serious study block.</p></div>
-      <div class="card"><h3>Quick Notes</h3><input id="note" class="input" placeholder="Write a quick note..."/><button class="btn" onclick="saveNote()" style="margin-top:12px">Save Note</button><div id="notes" class="result">No notes saved yet.</div></div>
+      <div class="card"><h3>Focus Timer</h3><button class="btn" onclick="startTimer()">Start 25 Min Timer</button><div id="timer" class="result">25:00</div></div>
       <div class="card"><h3>Viva Question Generator</h3><button class="btn" onclick="viva()">Generate Viva Questions</button><div id="viva" class="result">Click to prepare viva questions.</div></div>
+    </div>
+  </section>
+
+  <section id="notes">
+    <h2 class="title">Live Updatable Notes</h2>
+    <div class="tools">
+      <div class="card">
+        <h3>Write / Update Notes</h3>
+        <input id="noteTitle" class="input" placeholder="Note title, example: Python Loops" />
+        <textarea id="noteBody" placeholder="Write your notes here..."></textarea>
+        <div class="btns" style="margin-top:12px"><button class="btn" onclick="saveLiveNote()">Save / Update</button><button class="btn secondary" onclick="clearEditor()">Clear Editor</button><button class="btn danger" onclick="deleteAllNotes()">Delete All</button></div>
+        <p class="small">Notes save automatically in your browser using localStorage.</p>
+      </div>
+      <div class="card">
+        <h3>Saved Notes</h3>
+        <input id="searchNotes" class="input" placeholder="Search notes..." oninput="renderNotes()" />
+        <div id="notesList" class="result">No notes yet.</div>
+      </div>
     </div>
   </section>
 
   <section id="voice">
     <h2 class="title">Voice Control</h2>
     <div class="panel">
-      &gt; Commands available:<br>
-      &gt; “open python” | “open beee” | “show viva” | “start timer” | “make plan” | “read status”<br><br>
+      &gt; Commands: “open python”, “show viva”, “start timer”, “make plan”, “open notes”<br>
+      &gt; Voice: Simple English, slow, clear, male-style JARVIS tone<br><br>
       <button class="btn" onclick="listen()">🎙 Start Voice Command</button>
       <div id="voiceOutput" class="result">Voice system standing by...</div>
     </div>
@@ -80,69 +98,110 @@
     </div>
   </section>
 
-  <footer>Study JARVIS • Voice Enabled • Exam Focused • GitHub Pages Ready</footer>
+  <footer>Study JARVIS • JavaScript Male Voice • Live Notes • GitHub Pages Ready</footer>
 
   <script>
+    let currentLang='en-US';
+    let selectedVoice=null;
+    let editingIndex=null;
+
+    function loadVoices(){
+      const select=document.getElementById('voiceSelect');
+      const voices=speechSynthesis.getVoices();
+      if(!select||voices.length===0)return;
+      const englishVoices=voices.filter(v=>v.lang.startsWith('en'));
+      select.innerHTML='';
+      englishVoices.forEach((v)=>{
+        const option=document.createElement('option');
+        option.value=v.name;
+        option.textContent=`${v.name} (${v.lang})`;
+        select.appendChild(option);
+      });
+      const maleHint=englishVoices.find(v=>/male|david|mark|daniel|alex|google us english/i.test(v.name));
+      selectedVoice=maleHint||englishVoices[0]||voices[0];
+      if(selectedVoice)select.value=selectedVoice.name;
+    }
+
+    speechSynthesis.onvoiceschanged=loadVoices;
+    setTimeout(loadVoices,500);
+
+    function setLang(){
+      currentLang=document.getElementById('lang').value;
+      speak('Voice language changed. I will speak in clear simple English.');
+    }
+
+    function setVoice(){
+      const name=document.getElementById('voiceSelect').value;
+      selectedVoice=speechSynthesis.getVoices().find(v=>v.name===name)||selectedVoice;
+      speak('Voice selected. Study JARVIS is online.');
+    }
+
     function speak(text){
       const msg=new SpeechSynthesisUtterance(text);
-      msg.rate=1; msg.pitch=1;
+      msg.lang=currentLang;
+      if(selectedVoice)msg.voice=selectedVoice;
+      msg.rate=0.88;
+      msg.pitch=0.55;
+      msg.volume=1;
+      speechSynthesis.cancel();
       speechSynthesis.speak(msg);
     }
 
+    function speakByLang(en,hi){speak(en)}
+
     function makePlan(){
       const s=document.getElementById('subject').value;
-      const text=`Today: 40 minutes ${s} concept study, 35 minutes practice questions, 25 minutes Python revision, 20 minutes quick recap and mistakes.`;
-      document.getElementById('plan').innerText=text;
-      speak(text);
+      const text=`Today plan. Study ${s} concepts for 40 minutes. Practice questions for 35 minutes. Revise Python for 25 minutes. End with a 20 minute recap.`;
+      document.getElementById('plan').innerText=text;speak(text);
     }
 
     let timerInterval;
     function startTimer(){
-      clearInterval(timerInterval);
-      let time=25*60;
-      speak('Focus timer started. Study with full concentration.');
-      timerInterval=setInterval(()=>{
-        let m=Math.floor(time/60), sec=time%60;
-        document.getElementById('timer').innerText=`${m}:${sec<10?'0':''}${sec}`;
-        if(time--<=0){clearInterval(timerInterval);speak('Focus session completed. Take a short break.');}
-      },1000);
-    }
-
-    function saveNote(){
-      const note=document.getElementById('note').value.trim();
-      if(!note)return;
-      const old=document.getElementById('notes').innerHTML==='No notes saved yet.'?'':document.getElementById('notes').innerHTML;
-      document.getElementById('notes').innerHTML=old+'• '+note+'<br>';
-      document.getElementById('note').value='';
-      speak('Note saved.');
+      clearInterval(timerInterval);let time=25*60;speak('Focus timer started. Study with full concentration.');
+      timerInterval=setInterval(()=>{let m=Math.floor(time/60),sec=time%60;document.getElementById('timer').innerText=`${m}:${sec<10?'0':''}${sec}`;if(time--<=0){clearInterval(timerInterval);speak('Focus session completed. Take a short break.');}},1000);
     }
 
     function viva(){
       const qs='1. Explain your project in simple words. 2. What problem does it solve? 3. Which logic did you use? 4. What are the main functions? 5. What is the time complexity? 6. What improvement can be done?';
-      document.getElementById('viva').innerText=qs;
-      speak('Viva mode activated. Prepare these important questions.');
+      document.getElementById('viva').innerText=qs;speak('Viva mode activated. Prepare these important questions.');
     }
 
+    function getNotes(){return JSON.parse(localStorage.getItem('studyJarvisNotes')||'[]')}
+    function setNotes(notes){localStorage.setItem('studyJarvisNotes',JSON.stringify(notes));renderNotes()}
+    function saveLiveNote(){
+      const title=document.getElementById('noteTitle').value.trim();
+      const body=document.getElementById('noteBody').value.trim();
+      if(!title||!body){speak('Please write both title and note.');return;}
+      const notes=getNotes();
+      const note={title,body,date:new Date().toLocaleString()};
+      if(editingIndex!==null){notes[editingIndex]=note;editingIndex=null}else{notes.unshift(note)}
+      setNotes(notes);clearEditor();speak('Note saved successfully.');
+    }
+    function renderNotes(){
+      const list=document.getElementById('notesList');const q=(document.getElementById('searchNotes')?.value||'').toLowerCase();const notes=getNotes().filter(n=>n.title.toLowerCase().includes(q)||n.body.toLowerCase().includes(q));
+      if(notes.length===0){list.innerHTML='No notes found.';return;}
+      list.innerHTML=notes.map((n,i)=>`<div class="noteItem"><b>${n.title}</b><br><small>${n.date}</small><p>${n.body.replace(/\n/g,'<br>')}</p><button class="btn smallBtn" onclick="editNote(${i})">Edit</button> <button class="btn smallBtn danger" onclick="deleteNote(${i})">Delete</button></div>`).join('');
+    }
+    function editNote(i){const notes=getNotes();document.getElementById('noteTitle').value=notes[i].title;document.getElementById('noteBody').value=notes[i].body;editingIndex=i;location.hash='notes';}
+    function deleteNote(i){const notes=getNotes();notes.splice(i,1);setNotes(notes);speak('Note deleted.');}
+    function deleteAllNotes(){if(confirm('Delete all notes?')){localStorage.removeItem('studyJarvisNotes');renderNotes();}}
+    function clearEditor(){document.getElementById('noteTitle').value='';document.getElementById('noteBody').value='';editingIndex=null;}
+
     function listen(){
-      const output=document.getElementById('voiceOutput');
-      const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+      const output=document.getElementById('voiceOutput');const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
       if(!SpeechRecognition){output.innerText='Voice recognition is not supported in this browser. Use Chrome.';return;}
-      const recog=new SpeechRecognition();
-      recog.lang='en-IN';
-      recog.start();
-      output.innerText='Listening...';
-      recog.onresult=(e)=>{
-        const command=e.results[0][0].transcript.toLowerCase();
-        output.innerText='Command: '+command;
-        if(command.includes('python')){location.hash='python';speak('Opening Python module.');}
-        else if(command.includes('beee')){location.hash='beee';speak('Opening BEEE module.');}
-        else if(command.includes('viva')){viva();location.hash='tools';}
-        else if(command.includes('timer')){startTimer();location.hash='tools';}
-        else if(command.includes('plan')){makePlan();location.hash='tools';}
-        else if(command.includes('status')){speak('You are online. Keep studying consistently. Focus on Python, BEEE, Physics, Statistics, and Discrete Maths.');}
-        else{speak('Command not found. Try open Python, start timer, show viva, or make plan.');}
+      const recog=new SpeechRecognition();recog.lang=currentLang;recog.start();output.innerText='Listening...';
+      recog.onresult=(e)=>{const command=e.results[0][0].transcript.toLowerCase();output.innerText='Command: '+command;
+        if(command.includes('python')){location.hash='python';speakByLang('Opening Python module.','Python module khol raha hoon.');}
+        else if(command.includes('beee')){location.hash='beee';speakByLang('Opening BEEE module.','BEEE module khol raha hoon.');}
+        else if(command.includes('viva')||command.includes('वाइवा')){viva();location.hash='tools';}
+        else if(command.includes('timer')||command.includes('टाइमर')){startTimer();location.hash='tools';}
+        else if(command.includes('plan')||command.includes('प्लान')){makePlan();location.hash='tools';}
+        else if(command.includes('notes')||command.includes('नोट')){location.hash='notes';speakByLang('Opening live notes.','Live notes khol raha hoon.');}
+        else{speakByLang('Command not found. Try open Python, start timer, show viva, make plan, or open notes.','Command nahi mila. Python kholo, timer start, viva dikhao, plan banao, ya notes kholo try karo.');}
       };
     }
+    renderNotes();
   </script>
 </body>
 </html>
